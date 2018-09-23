@@ -1,5 +1,10 @@
 #!/usr/local/bin/python3.6
 
+#to create range
+import numpy
+#to build and show plot sin(x)
+import matplotlib.pyplot as pyplot
+
 #calculate sin(x) with precision d
 def _sin(x, d):
 	#partial sum of Taylor row
@@ -20,3 +25,12 @@ def _sin(x, d):
 def sin(x):
 	return _sin(x, 0.001)
 
+#do if only this module is main
+if __name__=='__main__':
+	#range {0;0.1;0.2;...;10}
+	args = numpy.r_[0:10:0.1]
+	pyplot.plot(
+		args,
+		[sin(x) for x in args],
+	)
+	pyplot.show()

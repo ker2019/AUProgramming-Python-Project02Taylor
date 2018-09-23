@@ -1,0 +1,22 @@
+#!/usr/local/bin/python3.6
+
+#calculate sin(x) with precision d
+def _sin(x, d):
+	#partial sum of Taylor row
+	sum=0
+	#common member of row
+	item=x
+	#number of member
+	n = 1
+	while item >= d or item <= -d:
+		sum += item
+		#member with number (n + 1) is zero
+		n += 2
+		item = -item * x * x
+		item = (item / n) / (n - 1)
+	return sum
+	
+#calculate sin with precision 0.001
+def sin(x):
+	return _sin(x, 0.001)
+

@@ -54,3 +54,11 @@ if __name__=='__main__':
 		args,
 		[sin(x) for x in args],
 	)
+	pyplot.show()
+	
+	args = numpy.r_[-5:5:0.1]
+	pyplot.plot(
+		args,
+		[exp(x) for x in args],
+	)
+	pyplot.show()

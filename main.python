@@ -13,7 +13,8 @@ def _sin(x, d):
 	item=x
 	#number of member
 	n = 1
-	while item >= d or item <= -d:
+	#up approximation of precision
+	while item*n >= d*(n - x) or item*n <= -d*(n - x):
 		sum += item
 		#member with number (n + 1) is zero
 		n += 2

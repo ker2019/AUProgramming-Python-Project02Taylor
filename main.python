@@ -26,6 +26,26 @@ def _sin(x, d):
 def sin(x):
 	return _sin(x, 0.001)
 
+#calculate exp(x) with precision d
+def _exp(x, d):
+	#partial sum of Taylor row
+	sum=0
+	#common member of row
+	item=1
+	#number of member
+	n = 0
+	#up approximation of precision
+	while item*n >= d*(n - x) or item*n <= -d*(n - x):
+		sum += item
+		n += 1
+		item = item * x
+		item = item / n
+	return sum
+	
+#calculate exp with precision 0.001
+def exp(x):
+	return _exp(x, 0.001)
+
 #do if only this module is main
 if __name__=='__main__':
 	#range {0;0.1;0.2;...;10}
@@ -34,4 +54,3 @@ if __name__=='__main__':
 		args,
 		[sin(x) for x in args],
 	)
-	pyplot.show()
